@@ -18,7 +18,9 @@ RUN curl -o /tmp/composer-setup.php https://getcomposer.org/installer \
 
 ENV PATH /composer/vendor/bin:$PATH
 
-RUN composer global require squizlabs/php_codesniffer --prefer-dist
+RUN composer global require squizlabs/php_codesniffer --prefer-dist && \
+    composer global require slevomat/coding-standard --prefer-dist && \
+    composer global require consistence/coding-standard
 
 VOLUME ["/var/www/html/"]
 WORKDIR /var/www/html/
